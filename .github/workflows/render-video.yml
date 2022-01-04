@@ -30,7 +30,7 @@ jobs:
       - run: npm i
       - run: npm run build -- --props="$WORKFLOW_INPUT"
         env:
-          WORKFLOW_INPUT: ${{ toJson(github.event.inputs) }}
+          WORKFLOW_INPUT: ${{ toJson(github.event.inputs, true) }}
           REMOTION_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v2
         with:
