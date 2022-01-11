@@ -12,11 +12,11 @@ on:
       starCount:
         description: "Star Count"
         required: true
-        default: 100
+        default: "100"
       duration:
         description: "Duration (seconds)"
         required: false
-        default: 15
+        default: "15"
 name: Render video
 jobs:
   render:
@@ -30,7 +30,7 @@ jobs:
       - run: npm i
       - run: npm run build -- --props="$WORKFLOW_INPUT"
         env:
-          WORKFLOW_INPUT: ${{ toJson(github.event.inputs) }}
+          WORKFLOW_INPUT: '{"duration": "10","repoName": "home_widget","repoOrg": "ABausG","starCount": "250"}'
           REMOTION_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v2
         with:
